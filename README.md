@@ -1,4 +1,4 @@
-# Raftar - DL3004 DWBI Final Project, Phase 2
+# Raftar 
 Physical data warehouse + ETL on the **real PakWheels used-car listings CSV** (Kaggle, Oct 2022, 89,956 rows).
 Team: Rafia Mohsin (24L-2595) | Khushbakht Sohail (24L-2604) | Ayesha Farooqui (24L-2520)
 
