@@ -1,0 +1,461 @@
+{
+ "stats": {
+  "raw_rows": 89956,
+  "whitespace_fixed_title": 1547,
+  "whitespace_fixed_location": 89954,
+  "whitespace_fixed_price": 0,
+  "whitespace_fixed_mileage": 0,
+  "whitespace_fixed_engine_type": 0,
+  "whitespace_fixed_transmission": 0,
+  "whitespace_fixed_engine_capacity": 0,
+  "whitespace_fixed_body_type": 0,
+  "title_suffix_removed": 2,
+  "model_year_null": 2507,
+  "model_year_out_of_range": 0,
+  "price_lacs": 85820,
+  "price_crore": 2726,
+  "price_plain_pkr": 3,
+  "price_call_for_price": 1405,
+  "price_null": 2,
+  "mileage_null": 2,
+  "mileage_over_max": 0,
+  "mileage_under_100": 7975,
+  "engine_kwh_rows": 134,
+  "engine_cc_out_of_range": 225,
+  "engine_cc_null": 2,
+  "fuel_null_before": 955,
+  "transmission_null": 2,
+  "body_type_null": 8549,
+  "location_null": 2,
+  "province_unknown": 11,
+  "last_updated_null": 2,
+  "rejected": {
+   "NO_PRICE": 1407
+  },
+  "rejected_total": 1407,
+  "clean_rows": 88549,
+  "possible_content_duplicates": 729,
+  "distinct_vehicle_bk": 12571,
+  "distinct_city_bk": 333,
+  "examples": {
+   "location": [
+    [
+     " Qasimabad, Hyderabad Sindh",
+     "Hyderabad / Sindh"
+    ],
+    [
+     " Model Town, Multan Punjab",
+     "Multan / Punjab"
+    ],
+    [
+     " Model Town, Lahore Punjab",
+     "Lahore / Punjab"
+    ],
+    [
+     " Karachi Sindh",
+     "Karachi / Sindh"
+    ],
+    [
+     " Bahria Town Rawalpindi, Rawalpindi Punjab",
+     "Rawalpindi / Punjab"
+    ],
+    [
+     " Bannu KPK",
+     "Bannu / Khyber Pakhtunkhwa"
+    ]
+   ],
+   "price": [
+    [
+     "PKR 21.4 lacs",
+     2140000
+    ],
+    [
+     "PKR 32.5 lacs",
+     3250000
+    ],
+    [
+     "PKR 7.8 lacs",
+     780000
+    ],
+    [
+     "PKR 17.7 lacs",
+     1770000
+    ],
+    [
+     "PKR 4.4 lacs",
+     440000
+    ],
+    [
+     "PKR 27.5 lacs",
+     2750000
+    ]
+   ],
+   "title": [
+    [
+     "Toyota Fortuner 2.7 VVTi 2022",
+     "Toyota Fortuner 2.7 VVTi 2022"
+    ],
+    [
+     "Toyota Corolla GLi 1.3 VVTi Special Edition 2014",
+     "Toyota Corolla GLi 1.3 VVTi Special Edition 2014"
+    ],
+    [
+     "Suzuki Cultus EURO II 2011",
+     "Suzuki Cultus EURO II 2011"
+    ],
+    [
+     "Hyundai Sonata 2.0 2022",
+     "Hyundai Sonata 2.0 2022"
+    ]
+   ]
+  },
+  "table_counts": {
+   "project_staging.raw_listings": 89956,
+   "project_staging.stg_listing_clean": 88549,
+   "project_staging.stg_listing_reject": 1407,
+   "project_dw.dim_date": 1462,
+   "project_dw.dim_vehicle": 12572,
+   "project_dw.dim_city": 333,
+   "project_dw.dim_source": 2,
+   "project_dw.fact_listing_observation": 88549
+  }
+ },
+ "dq": [
+  [
+   "Reconciliation",
+   "Raw rows = clean rows + rejected rows (control total)",
+   "= 0 (difference)",
+   "0",
+   "PASS"
+  ],
+  [
+   "Reconciliation",
+   "Clean staging rows = fact rows",
+   "= 0 (difference)",
+   "0",
+   "PASS"
+  ],
+  [
+   "Reconciliation",
+   "Total asking price in staging = total in fact (control total, not revenue)",
+   "= 0 (difference)",
+   "0.00",
+   "PASS"
+  ],
+  [
+   "Reconciliation",
+   "Rows in reject table (all reasons)",
+   "informational",
+   "1407",
+   "INFO"
+  ],
+  [
+   "Completeness",
+   "Fact rows with NULL asking_price_pkr",
+   "= 0",
+   "0",
+   "PASS"
+  ],
+  [
+   "Completeness",
+   "Fact rows with NULL vehicle_key",
+   "= 0",
+   "0",
+   "PASS"
+  ],
+  [
+   "Completeness",
+   "Fact rows with NULL city_key",
+   "= 0",
+   "0",
+   "PASS"
+  ],
+  [
+   "Completeness",
+   "Fact rows with NULL source_listing_id",
+   "= 0",
+   "0",
+   "PASS"
+  ],
+  [
+   "Completeness",
+   "Fact rows with missing mileage",
+   "informational",
+   "0",
+   "INFO"
+  ],
+  [
+   "Completeness",
+   "Fact rows with unknown last-updated date",
+   "informational",
+   "0",
+   "INFO"
+  ],
+  [
+   "Completeness",
+   "Fact rows with missing model year",
+   "informational",
+   "2503",
+   "INFO"
+  ],
+  [
+   "Completeness",
+   "Fact rows with unknown body type",
+   "informational",
+   "8465",
+   "INFO"
+  ],
+  [
+   "Completeness",
+   "Fact rows with unknown fuel type",
+   "informational",
+   "819",
+   "INFO"
+  ],
+  [
+   "Completeness",
+   "Fact rows with missing engine cc",
+   "informational",
+   "325",
+   "INFO"
+  ],
+  [
+   "Completeness",
+   "Fact rows with unknown city or province",
+   "informational",
+   "9",
+   "INFO"
+  ],
+  [
+   "Accuracy",
+   "Asking price <= 0",
+   "= 0",
+   "0",
+   "PASS"
+  ],
+  [
+   "Accuracy",
+   "Asking price below PKR 50,000",
+   "= 0",
+   "0",
+   "PASS"
+  ],
+  [
+   "Accuracy",
+   "Asking price above PKR 500,000,000",
+   "= 0",
+   "0",
+   "PASS"
+  ],
+  [
+   "Accuracy",
+   "Negative mileage",
+   "= 0",
+   "0",
+   "PASS"
+  ],
+  [
+   "Accuracy",
+   "Mileage above 1,000,000 km",
+   "= 0",
+   "0",
+   "PASS"
+  ],
+  [
+   "Accuracy",
+   "Mileage under 100 km (likely placeholder, kept as is)",
+   "informational",
+   "7449",
+   "INFO"
+  ],
+  [
+   "Accuracy",
+   "Model year outside 1950-2022",
+   "= 0",
+   "0",
+   "PASS"
+  ],
+  [
+   "Accuracy",
+   "Engine cc outside 500-8000",
+   "= 0",
+   "0",
+   "PASS"
+  ],
+  [
+   "Accuracy",
+   "Last-updated date later than extract date",
+   "= 0",
+   "0",
+   "PASS"
+  ],
+  [
+   "Validity",
+   "Transmission not Automatic / Manual / Unknown",
+   "= 0",
+   "0",
+   "PASS"
+  ],
+  [
+   "Validity",
+   "Fuel not Petrol / Diesel / Hybrid / Electric / Unknown",
+   "= 0",
+   "0",
+   "PASS"
+  ],
+  [
+   "Validity",
+   "Province outside the expected list",
+   "= 0",
+   "0",
+   "PASS"
+  ],
+  [
+   "Validity",
+   "listing_count not equal to 1",
+   "= 0",
+   "0",
+   "PASS"
+  ],
+  [
+   "Validity",
+   "Text with leading/trailing spaces in dim_city",
+   "= 0",
+   "0",
+   "PASS"
+  ],
+  [
+   "Validity",
+   "Text with leading/trailing spaces in dim_vehicle make/model",
+   "= 0",
+   "0",
+   "PASS"
+  ],
+  [
+   "Uniqueness",
+   "Duplicate source_listing_id in fact",
+   "= 0",
+   "0",
+   "PASS"
+  ],
+  [
+   "Uniqueness",
+   "Duplicate vehicle_bk in dim_vehicle",
+   "= 0",
+   "0",
+   "PASS"
+  ],
+  [
+   "Uniqueness",
+   "Duplicate city_bk in dim_city",
+   "= 0",
+   "0",
+   "PASS"
+  ],
+  [
+   "Uniqueness",
+   "Duplicate dates in dim_date",
+   "= 0",
+   "0",
+   "PASS"
+  ],
+  [
+   "Uniqueness",
+   "Extra rows sharing vehicle + city + price + mileage (possible repeat ads, kept)",
+   "informational",
+   "1379",
+   "INFO"
+  ],
+  [
+   "Integrity",
+   "Fact rows without matching dim_vehicle",
+   "= 0",
+   "0",
+   "PASS"
+  ],
+  [
+   "Integrity",
+   "Fact rows without matching dim_city",
+   "= 0",
+   "0",
+   "PASS"
+  ],
+  [
+   "Integrity",
+   "Fact rows without matching dim_source",
+   "= 0",
+   "0",
+   "PASS"
+  ],
+  [
+   "Integrity",
+   "Fact rows without matching dim_date (observation)",
+   "= 0",
+   "0",
+   "PASS"
+  ],
+  [
+   "Integrity",
+   "Fact rows without matching dim_date (extract)",
+   "= 0",
+   "0",
+   "PASS"
+  ],
+  [
+   "Integrity",
+   "Fact rows without matching dim_date (last updated)",
+   "= 0",
+   "0",
+   "PASS"
+  ],
+  [
+   "Integrity",
+   "Fact rows pointing to the Unknown vehicle member",
+   "= 0",
+   "0",
+   "PASS"
+  ],
+  [
+   "Integrity",
+   "Dimension rows never used by any fact (vehicle)",
+   "= 0",
+   "0",
+   "PASS"
+  ],
+  [
+   "Integrity",
+   "Dimension rows never used by any fact (city)",
+   "= 0",
+   "0",
+   "PASS"
+  ],
+  [
+   "Size",
+   "Fact rows (minimum 10,000)",
+   ">= 10000",
+   "88549",
+   "PASS"
+  ],
+  [
+   "Size",
+   "dim_vehicle rows (minimum 100)",
+   ">= 100",
+   "12572",
+   "PASS"
+  ],
+  [
+   "Size",
+   "dim_city rows (minimum 100)",
+   ">= 100",
+   "333",
+   "PASS"
+  ],
+  [
+   "Size",
+   "dim_date rows (minimum 100)",
+   ">= 100",
+   "1462",
+   "PASS"
+  ]
+ ]
+}
