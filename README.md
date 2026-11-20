@@ -36,6 +36,22 @@ The input is `data/raw/pakwheels_csv.zip`; pass another path as the first argume
 * Surrogate keys: `SERIAL` on every dimension (`dim_date` uses YYYYMMDD), Unknown member = key `-1`. Fact load joins clean staging to the dimensions on business keys (`vehicle_bk`, `city_bk`, `full_date`).
 * Grain: one advertisement per source extract, unique on `source_listing_id` (ad id from the URL).
 * Single extract: `observation_date_key = -1` (Unknown), `extract_date_key = 20221010`, and the source's real "ad last updated" date is in `last_updated_date_key` (added column).
+
+
+
+## How to run (Windows CMD)
+
+1. Install PostgreSQL and Python 3.12
+2. `pip install -r requirements.txt`
+3. `set PGPASSWORD=<your_postgres_password>`
+4. `python etl\run_pipeline.py`
+   Creates DB `raftar_dw`, runs all SQL scripts in order, loads data, runs DQ checks.
+5. Expected: `DQ: 38 pass, 0 fail`
+
+## Extra validation
+- `sql/08_surrogate_key_validation.sql`: orphans, duplicate business keys and fact→dim mapping (all results must be 0)
+- `sql/07_normalization_view.sql`: vehicle dimension fragmentation analysis
+- `etl/schema_drift_check.py`: detects added, removed or changed columns in the source CSV and DW tables (run once for a baseline, again after changes)
 * Differences from the Phase 1 dictionary: `listing_observation_key` name, `asking_price_pkr NOT NULL`, no `ListingURL`, extra `last_updated_date_key`.
 
 ## Not included
