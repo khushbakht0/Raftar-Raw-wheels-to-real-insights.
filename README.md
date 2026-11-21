@@ -55,4 +55,4 @@ The input is `data/raw/pakwheels_csv.zip`; pass another path as the first argume
 * Differences from the Phase 1 dictionary: `listing_observation_key` name, `asking_price_pkr NOT NULL`, no `ListingURL`, extra `last_updated_date_key`.
 
 ## Not included
-`Fact_EconomicIndicator`, `Dim_EconomicIndicator`, `Dim_Geography` and Q10: they need the real PBS monthly CPI series, which was not available. Nothing is simulated.
+`Fact_EconomicIndicator`, `Dim_EconomicIndicator`, `Dim_Geography` and Q10: they need the real PBS monthly CPI series, and will be included in Phase 3.
